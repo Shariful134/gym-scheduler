@@ -10,7 +10,7 @@ const registerUser = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: StatusCodes.OK,
     success: true,
-    message: 'Registeretion Successfully',
+    message: 'Registration Successfully',
     data: [result],
   });
 });
@@ -36,7 +36,31 @@ const loginUser = catchAsync(async (req, res, next) => {
   });
 });
 
+//Registered Trainer
+const registerdTrainer = catchAsync(async (req, res) => {
+  const result = await authServices.registeredTrainerIntoDB(req.body);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: 'Trainer Registration Successfully',
+    data: [result],
+  });
+});
+
+//Registered Trainee
+const registerdTrainee = catchAsync(async (req, res) => {
+  const result = await authServices.registeredTraineeIntoDB(req.body);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: 'Trainee Registration Successfully',
+    data: [result],
+  });
+});
+
 export const authControllers = {
   registerUser,
   loginUser,
+  registerdTrainer,
+  registerdTrainee,
 };

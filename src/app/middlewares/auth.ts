@@ -13,7 +13,6 @@ import { User } from '../modules/auth/auth.model';
 const auth = (...requiredRoles: TUserRole[]) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const token = req.headers.authorization;
-    // console.log(token);
 
     //if the token is sent to the client side
     if (!token) {
@@ -22,7 +21,6 @@ const auth = (...requiredRoles: TUserRole[]) => {
 
     //new add token verify
     let decoded;
-    // console.log(decoded);
     try {
       decoded = jwt.verify(
         token,
@@ -42,7 +40,7 @@ const auth = (...requiredRoles: TUserRole[]) => {
     }
 
     if (requiredRoles && !requiredRoles.includes(role as TUserRole)) {
-      throw new AppError(StatusCodes.UNAUTHORIZED, 'Your are not Authorized!');
+      throw new AppError(StatusCodes.UNAUTHORIZED, 'Unauthorized access');
     }
     req.user = decoded;
     next();

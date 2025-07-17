@@ -7,6 +7,8 @@ export interface IUsers {
   email: string;
   password: string;
   role: 'Admin' | 'Trainer' | 'Trainee';
+  createdAt: string;
+  updatedAt: string;
 }
 
 export type TUserLogin = {

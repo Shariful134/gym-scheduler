@@ -9,8 +9,18 @@ import handleDuplicateError from '../errors/handleDuplicateError';
 import handleValidationError from '../errors/handleValidationError';
 import handleZodError from '../errors/handleZodError';
 import { TErrorDetails } from '../interface/error';
+import { StatusCodes } from 'http-status-codes';
+import unAuthorizedError from '../errors/unAuthorizedError';
 
 const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
+  if (err instanceof AppError && err.message === 'Unauthorized access') {
+    res.status(StatusCodes.UNAUTHORIZED).json({
+      success: false,
+      message: 'Unauthorized access.',
+      errorDetails: 'You must be an admin to perform this action.',
+    });
+    return;
+  }
   // console.log(err.statusCode);
   // default values
   let statusCode = 500;
@@ -57,9 +67,9 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
 
   res.status(statusCode).json({
     success: false,
+    statusCode: err?.statusCode,
     message,
     errorDetails,
-
     stack: config.node_env === 'development' ? err?.stack : null,
   });
 };

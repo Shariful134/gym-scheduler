@@ -2,6 +2,7 @@ import { JwtPayload } from 'jsonwebtoken';
 import { TUserRole } from '../modules/auth/auth.interface';
 
 export interface CustomJwtPayload extends JwtPayload {
+  id: string;
   userEmail: string;
   role: TUserRole;
   iat: number;
