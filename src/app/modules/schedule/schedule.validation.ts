@@ -1,4 +1,13 @@
 import { z } from 'zod';
+export const dayEnum = z.enum([
+  'Saturday',
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+]);
 
 const objectIdValidator = z
   .string({ required_error: 'ID is required' })
@@ -7,6 +16,7 @@ const objectIdValidator = z
 const scheduleValidationSchema = z.object({
   body: z.object({
     title: z.string({ required_error: 'Title is required' }),
+    day: dayEnum,
     date: z.preprocess(
       (arg) =>
         typeof arg === 'string' || arg instanceof Date
@@ -14,16 +24,47 @@ const scheduleValidationSchema = z.object({
           : undefined,
       z.date({ required_error: 'Date is required' }),
     ),
-    duration: z.number().min(1).optional(),
+    duration: z
+      .number({ required_error: 'Duration is required' })
+      .min(60, 'Minimum 60 Minutes required')
+      .max(120, 'Maximum 120 Minutes allowed'),
     trainerId: objectIdValidator,
-    maxTrainees: z.number().max(50).optional(),
+    maxTrainees: z.number().max(10).optional(),
+    bookedTrainees: z
+      .array(objectIdValidator)
+      .max(10, 'Cannot book more than 10 trainees'),
+    createdBy: objectIdValidator,
+  }),
+});
+
+const scheduleValidationSchemaUpdate = z.object({
+  body: z.object({
+    title: z.string({ required_error: 'Title is required' }).optional(),
+    day: dayEnum.optional(),
+    date: z
+      .preprocess(
+        (arg) =>
+          typeof arg === 'string' || arg instanceof Date
+            ? new Date(arg)
+            : undefined,
+        z.date({ required_error: 'Date is required' }),
+      )
+      .optional(),
+    duration: z
+      .number({ required_error: 'Duration is required' })
+      .min(60, 'Minimum 60 Minutes required')
+      .max(120, 'Maximum 120 Minutes allowed'),
+    trainerId: objectIdValidator.optional(),
+    maxTrainees: z.number().max(10).optional(),
     bookedTrainees: z
       .array(objectIdValidator)
       .max(10, 'Cannot book more than 10 trainees')
       .optional(),
+    createdBy: objectIdValidator.optional(),
   }),
 });
 
 export const scheduleValidation = {
   scheduleValidationSchema,
+  scheduleValidationSchemaUpdate,
 };

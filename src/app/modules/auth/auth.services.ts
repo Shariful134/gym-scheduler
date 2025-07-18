@@ -81,6 +81,55 @@ const registeredTrainerIntoDB = async (payload: IUsers) => {
     updatedAt,
   };
 };
+
+// Get Single Trainer
+const getSingleTrainerIntoDB = async (email: string) => {
+  const result = await User.findOne({ email });
+  if (result?.role !== 'Trainer') {
+    throw new AppError(StatusCodes.BAD_REQUEST, 'Trainer is not Found!');
+  }
+  if (!result) {
+    throw new AppError(StatusCodes.BAD_REQUEST, 'Trainer is not Found!');
+  }
+  return result;
+};
+
+// Get Single Trainer
+const getAllTrainerIntoDB = async () => {
+  const result = await User.find();
+
+  const trainer = result.filter((trainer) => trainer.role === 'Trainer');
+
+  //checking user is exists
+  if (!trainer) {
+    throw new AppError(StatusCodes.BAD_REQUEST, 'Trainer is not Found!');
+  }
+  return trainer;
+};
+
+// Get All User
+const getAllUserIntoDB = async () => {
+  const result = await User.find();
+
+  //checking user is exists
+  if (!result) {
+    throw new AppError(StatusCodes.BAD_REQUEST, 'User is not Found!');
+  }
+  return result;
+};
+
+// Delete Trainer
+const deleteTrainerIntoDB = async (email: string) => {
+  const trainer = await User.findOne({ email });
+
+  //checking user is exists
+  if (trainer?.role !== 'Trainer') {
+    throw new AppError(StatusCodes.BAD_REQUEST, 'Trainer is not Found!');
+  }
+  const result = await User.deleteOne({ email });
+  return result;
+};
+
 // Registered Trainee
 const registeredTraineeIntoDB = async (payload: IUsers) => {
   const user = await User.isUserExistsByEmail(payload.email);
@@ -106,4 +155,8 @@ export const authServices = {
   loginUserIntoDB,
   registeredTrainerIntoDB,
   registeredTraineeIntoDB,
+  getSingleTrainerIntoDB,
+  getAllTrainerIntoDB,
+  getAllUserIntoDB,
+  deleteTrainerIntoDB,
 };

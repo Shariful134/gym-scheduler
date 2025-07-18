@@ -43,6 +43,7 @@ const auth = (...requiredRoles: TUserRole[]) => {
       throw new AppError(StatusCodes.UNAUTHORIZED, 'Unauthorized access');
     }
     req.user = decoded;
+
     next();
   });
 };

@@ -23,10 +23,23 @@ router.post(
 //Registration Trainer
 router.post(
   '/register-trainer',
-  auth('admin'),
+  auth('Admin'),
   validateRequest(authValidation.registerUserValidationSchema),
   authControllers.registerdTrainer,
 );
+
+//Get SingleTrainer
+router.get(
+  '/getSingle-trainer/:email',
+  auth('Admin'),
+  authControllers.getSingleTrainer,
+);
+
+//Get All User
+router.get('/getAll-user', authControllers.getAllUser);
+
+//Get All Trainer
+router.get('/getAll-trainer', auth('Admin'), authControllers.getAllTrainer);
 
 //Registration Trainee
 router.post(

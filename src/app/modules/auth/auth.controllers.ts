@@ -47,6 +47,52 @@ const registerdTrainer = catchAsync(async (req, res) => {
   });
 });
 
+//getSingle Trainer
+const getSingleTrainer = catchAsync(async (req, res) => {
+  const { email } = req.params;
+  const result = await authServices.getSingleTrainerIntoDB(email);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: 'Trainer Retrived Successfully',
+    data: [result],
+  });
+});
+
+//getAll Trainer
+const getAllTrainer = catchAsync(async (req, res) => {
+  const result = await authServices.getAllTrainerIntoDB();
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: 'Trainer Retrived Successfully',
+    data: result,
+  });
+});
+
+//getAll Trainer
+const getAllUser = catchAsync(async (req, res) => {
+  const result = await authServices.getAllUserIntoDB();
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: 'All User Retrived Successfully',
+    data: result,
+  });
+});
+
+//getAll Trainer
+const deleteTrainer = catchAsync(async (req, res) => {
+  const { email } = req.params;
+  const result = await authServices.deleteTrainerIntoDB(email);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: 'Trainer Deleted Successfully',
+    data: result,
+  });
+});
+
 //Registered Trainee
 const registerdTrainee = catchAsync(async (req, res) => {
   const result = await authServices.registeredTraineeIntoDB(req.body);
@@ -63,4 +109,8 @@ export const authControllers = {
   loginUser,
   registerdTrainer,
   registerdTrainee,
+  getSingleTrainer,
+  getAllUser,
+  getAllTrainer,
+  deleteTrainer,
 };

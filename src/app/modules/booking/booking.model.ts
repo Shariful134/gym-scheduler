@@ -3,6 +3,11 @@ import { IBooking } from './booking.interface';
 
 const bookingSchema = new Schema<IBooking>(
   {
+    trainerId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
     traineeId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
