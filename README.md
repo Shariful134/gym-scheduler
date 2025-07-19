@@ -24,7 +24,7 @@ The **Gym Class Scheduling and Membership Management System** is a role-based ba
 - **Design Pattern:** Modular (MVC Inspired)
 
 ---
-# Clone Repository
+## Clone Repository
 
 ```bash
 git clone https://github.com/Shariful134/gym-scheduler.git
@@ -33,7 +33,7 @@ npm install
 npm run dev
 ```
 
-# Install Dependencies
+## Install Dependencies
 ```ts
 npm install
 # or
@@ -44,7 +44,7 @@ pnpm install
 bun install
 ```
 
-# Create .env File and Setup your .env File
+## Create .env File and Setup your .env File
 ```ts
 NODE_ENV=development
 PORT=5000
@@ -54,7 +54,7 @@ JWT_ACCESS_SECRET = secret of your access token key
 JWT_REFRESH_SECRET = secret of your refresh token key
 ```
 
-# Run Development Server
+## Run Development Server
 step-1:
 ```ts
 npm run build
