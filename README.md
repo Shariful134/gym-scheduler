@@ -8,7 +8,7 @@ The **Gym Class Scheduling and Membership Management System** is a role-based ba
 
 ## 🔗 Live Server URL
 
-[👉 Click to Visit Live API Server](https://your-deployment-link.com)
+[👉 Click to Visit Live API Server](https://gym-scheduler-six.vercel.app/)
 
 ---
 
