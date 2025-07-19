@@ -31,10 +31,10 @@ router.delete(
 );
 
 //getSingle Class Scheduler
-router.get('/getSingle/:id', scheduleControllers.getSingleClassSchedule);
+router.get('/get/:id', scheduleControllers.getSingleClassSchedule);
 
 //getAll Class Scheduler
-router.get('/getAll', scheduleControllers.getAllClassSchedule);
+router.get('/get', scheduleControllers.getAllClassSchedule);
 
 //getAll Class Scheduler with assined Trainee
 router.get(

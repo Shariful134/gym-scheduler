@@ -37,16 +37,16 @@ router.delete(
 
 //Trainee Get by Email
 router.get(
-  '/getSingle-trainer/:email',
+  '/get-trainer/:email',
   auth('Admin'),
   authControllers.getSingleTrainer,
 );
 
 //Get All User
-router.get('/getAll-user', authControllers.getAllUser);
+router.get('/get-user', authControllers.getAllUser);
 
 //Get All Trainer
-router.get('/getAll-trainer', authControllers.getAllTrainer);
+router.get('/get-trainer', authControllers.getAllTrainer);
 
 //Registration Trainee
 router.post(
