@@ -36,4 +36,11 @@ router.get('/getSingle/:id', scheduleControllers.getSingleClassSchedule);
 //getAll Class Scheduler
 router.get('/getAll', scheduleControllers.getAllClassSchedule);
 
+//getAll Class Scheduler with assined Trainee
+router.get(
+  '/get-assignedTrainer',
+  auth('Trainer'),
+  scheduleControllers.getAllClassScheduleAssignedTrainer,
+);
+
 export const classScheduleRoutes = router;

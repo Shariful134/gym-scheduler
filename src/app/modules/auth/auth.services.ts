@@ -120,14 +120,14 @@ const getAllUserIntoDB = async () => {
 
 // Delete Trainer
 const deleteTrainerIntoDB = async (email: string) => {
-  const trainer = await User.findOne({ email });
+  const trainer = await User.findOneAndDelete({ email });
 
   //checking user is exists
   if (trainer?.role !== 'Trainer') {
     throw new AppError(StatusCodes.BAD_REQUEST, 'Trainer is not Found!');
   }
-  const result = await User.deleteOne({ email });
-  return result;
+
+  return trainer;
 };
 
 // Registered Trainee

@@ -60,10 +60,25 @@ const getAllClassSchedule = catchAsync(async (req, res) => {
   });
 });
 
+//GetAll Class Schedule
+const getAllClassScheduleAssignedTrainer = catchAsync(async (req, res) => {
+  const result =
+    await scheduleServices.getAllClassScheduleAssignedTrainerIntoDB(
+      req?.user?.id,
+    );
+  sendResponse(res, {
+    statusCode: StatusCodes.CREATED,
+    success: true,
+    message: 'All Class scheduled Retrived successfully',
+    data: result,
+  });
+});
+
 export const scheduleControllers = {
   classSchedule,
   updateClassSchedule,
   deleteClassSchedule,
   getSingleClassSchedule,
   getAllClassSchedule,
+  getAllClassScheduleAssignedTrainer,
 };

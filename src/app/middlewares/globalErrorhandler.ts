@@ -10,19 +10,34 @@ import handleValidationError from '../errors/handleValidationError';
 import handleZodError from '../errors/handleZodError';
 import { TErrorDetails } from '../interface/error';
 import { StatusCodes } from 'http-status-codes';
-import unAuthorizedError from '../errors/unAuthorizedError';
 
 const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
-  if (err instanceof AppError && err.message === 'Unauthorized access') {
+  if (
+    err instanceof AppError &&
+    err.message?.includes('trainees allowed per ')
+  ) {
+    // const matched = err.message.match(/You must be an (.+?) to perform/);
+    // const requiredRole = matched ? matched[1] : 'authorized user';
+
     res.status(StatusCodes.UNAUTHORIZED).json({
       success: false,
-      message: 'Unauthorized access.',
-      errorDetails: 'You must be an admin to perform this action.',
+      message: `Class schedule is full. Maximum 10 trainees allowed per schedule.`,
     });
     return;
   }
-  // console.log(err.statusCode);
-  // default values
+
+  if (err instanceof AppError && err.message?.includes('perform')) {
+    const matched = err.message.match(/You must be an (.+?) to perform/);
+    const requiredRole = matched ? matched[1] : 'authorized user';
+
+    res.status(StatusCodes.UNAUTHORIZED).json({
+      success: false,
+      message: 'Unauthorized access.',
+      errorDetails: `You must be an ${requiredRole} to perform this action.`,
+    });
+    return;
+  }
+
   let statusCode = 500;
   let message = 'Something went wrong!';
   let errorDetails: TErrorDetails = {

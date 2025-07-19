@@ -3,16 +3,26 @@ import AppError from '../../errors/AppError';
 import { ClassSchedule } from './schedule.model';
 import { IClassSchedule } from './shcedule.interface';
 import { User } from '../auth/auth.model';
+import convertToMinutes from '../../utils/converToMinutes';
 
 // CreateShedule
 const classScheduleIntoDB = async (payload: IClassSchedule) => {
   const trainer = await User.findById(payload?.trainerId);
+  const admin = await User.findById(payload?.createdBy);
+  const startMinutes = convertToMinutes(payload.startTime);
+  const endMinutes = convertToMinutes(payload.endTime);
+  const classDuration = endMinutes - startMinutes;
+
+  if (!admin) {
+    throw new AppError(
+      StatusCodes.BAD_REQUEST,
+      'Admin or createdBy is not Found!',
+    );
+  }
+
   if (trainer?.role !== 'Trainer') {
     throw new AppError(StatusCodes.BAD_REQUEST, 'This is not Trainer Id');
   }
-
-  const trainees = payload?.bookedTrainees?.length;
-  const payloads = { ...payload, maxTrainees: trainees };
 
   const traineeChecks = await Promise.all(
     payload.bookedTrainees.map(async (traineeId) => {
@@ -26,11 +36,33 @@ const classScheduleIntoDB = async (payload: IClassSchedule) => {
     }),
   );
 
-  if (payload?.duration > 120) {
+  if (classDuration !== 120) {
     throw new AppError(
       StatusCodes.BAD_REQUEST,
       'Each class must be exactly 2 hours long (120 minutes)',
     );
+  }
+
+  // Find all existing classes for the same trainer on the same date
+  const existingSchedules = await ClassSchedule.find({
+    trainerId: payload.trainerId,
+    date: payload.date,
+  });
+  const available = existingSchedules?.map((schedule) => schedule.endTime);
+
+  for (const schedule of existingSchedules) {
+    const existingStart = convertToMinutes(schedule.startTime);
+    const existingEnd = convertToMinutes(schedule.endTime);
+
+    // Case 1: Overlap Check
+    const isOverlapping =
+      startMinutes < existingEnd && endMinutes > existingStart;
+    if (isOverlapping) {
+      throw new AppError(
+        StatusCodes.BAD_REQUEST,
+        `This Trainer already has a class at this time. Available: after ${available[available?.length - 1]}.`,
+      );
+    }
   }
 
   if (
@@ -53,6 +85,10 @@ const classScheduleIntoDB = async (payload: IClassSchedule) => {
     );
   }
 
+  const payloads = {
+    ...payload,
+    duration: classDuration,
+  };
   const result = await ClassSchedule.create(payloads);
 
   return result;
@@ -63,13 +99,16 @@ const updateClassScheduleIntoDB = async (
   id: string,
   payload: Record<string, any>,
 ) => {
+  const schedule = await ClassSchedule.findById(id);
+
+  if (!schedule) {
+    throw new AppError(StatusCodes.BAD_REQUEST, 'Schedule is not Found!');
+  }
+
   const trainer = await User.findById(payload?.trainerId);
   if (trainer?.role !== 'Trainer') {
     throw new AppError(StatusCodes.BAD_REQUEST, 'This is not Trainer Id');
   }
-
-  // const trainees = payload?.bookedTrainees?.length;
-  // const payloads = { ...payload, maxTrainees: trainees };
 
   const traineeChecks = await Promise.all(
     payload.bookedTrainees.map(async (traineeId: string) => {
@@ -144,10 +183,22 @@ const getAllClassScheduleIntoDB = async () => {
   return result;
 };
 
+//getAll ClassSchedule with assigned Trainee
+const getAllClassScheduleAssignedTrainerIntoDB = async (id: string) => {
+  const result = await ClassSchedule.find({ trainerId: id }).populate(
+    'trainerId',
+  );
+  if (!result) {
+    throw new AppError(StatusCodes.BAD_REQUEST, 'Class Schedule is not Found!');
+  }
+  return result;
+};
+
 export const scheduleServices = {
   classScheduleIntoDB,
   updateClassScheduleIntoDB,
   deleteClassScheduleIntoDB,
   getSingleClassScheduleIntoDB,
   getAllClassScheduleIntoDB,
+  getAllClassScheduleAssignedTrainerIntoDB,
 };

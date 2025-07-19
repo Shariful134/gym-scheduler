@@ -27,7 +27,10 @@ const scheduleValidationSchema = z.object({
     duration: z
       .number({ required_error: 'Duration is required' })
       .min(60, 'Minimum 60 Minutes required')
-      .max(120, 'Maximum 120 Minutes allowed'),
+      .max(120, 'Maximum 120 Minutes allowed')
+      .optional(),
+    startTime: z.string({ required_error: 'Start time is required' }),
+    endTime: z.string({ required_error: 'End time is required' }),
     trainerId: objectIdValidator,
     maxTrainees: z.number().max(10).optional(),
     bookedTrainees: z
@@ -53,9 +56,14 @@ const scheduleValidationSchemaUpdate = z.object({
     duration: z
       .number({ required_error: 'Duration is required' })
       .min(60, 'Minimum 60 Minutes required')
-      .max(120, 'Maximum 120 Minutes allowed'),
+      .max(120, 'Maximum 120 Minutes allowed')
+      .optional(),
+    startTime: z
+      .string({ required_error: 'Start time is required' })
+      .optional(),
+    endTime: z.string({ required_error: 'End time is required' }).optional(),
     trainerId: objectIdValidator.optional(),
-    maxTrainees: z.number().max(10).optional(),
+    maxTrainees: z.number().max(10).default(10).optional(),
     bookedTrainees: z
       .array(objectIdValidator)
       .max(10, 'Cannot book more than 10 trainees')

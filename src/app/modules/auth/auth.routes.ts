@@ -28,6 +28,13 @@ router.post(
   authControllers.registerdTrainer,
 );
 
+//delete Trainer
+router.delete(
+  '/delete-trainer/:email',
+  auth('Admin'),
+  authControllers.deleteTrainer,
+);
+
 //Get SingleTrainer
 router.get(
   '/getSingle-trainer/:email',
@@ -39,7 +46,7 @@ router.get(
 router.get('/getAll-user', authControllers.getAllUser);
 
 //Get All Trainer
-router.get('/getAll-trainer', auth('Admin'), authControllers.getAllTrainer);
+router.get('/getAll-trainer', authControllers.getAllTrainer);
 
 //Registration Trainee
 router.post(

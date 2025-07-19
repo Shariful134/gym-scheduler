@@ -16,16 +16,19 @@ const classcheduleSchema = new Schema<IClassSchedule>(
         'Friday',
       ],
       required: true,
+      trim: true,
     },
     date: { type: Date, required: true },
 
-    duration: { type: Number, default: 120, required: true },
+    duration: { type: Number, default: 120 },
+    startTime: { type: String, required: true },
+    endTime: { type: String, required: true },
     trainerId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true,
     },
-    maxTrainees: { type: Number },
+    maxTrainees: { type: Number, default: 10 },
     bookedTrainees: [
       { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     ],

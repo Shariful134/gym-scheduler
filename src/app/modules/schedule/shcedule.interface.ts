@@ -12,9 +12,11 @@ export interface IClassSchedule {
     | 'Thursday'
     | 'Friday';
   date: Date;
-  duration: number;
+  duration?: number;
+  startTime: string;
+  endTime: string;
   trainerId: Types.ObjectId;
-  maxTrainees?: number;
+  maxTrainees: number;
   bookedTrainees: Types.ObjectId[];
   createdBy: Types.ObjectId;
 }
