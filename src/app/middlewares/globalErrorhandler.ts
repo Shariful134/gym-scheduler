@@ -16,9 +16,6 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
     err instanceof AppError &&
     err.message?.includes('trainees allowed per ')
   ) {
-    // const matched = err.message.match(/You must be an (.+?) to perform/);
-    // const requiredRole = matched ? matched[1] : 'authorized user';
-
     res.status(StatusCodes.UNAUTHORIZED).json({
       success: false,
       message: `Class schedule is full. Maximum 10 trainees allowed per schedule.`,

@@ -94,7 +94,7 @@ const getSingleTrainerIntoDB = async (email: string) => {
   return result;
 };
 
-// Get Single Trainer
+// Get All Trainer
 const getAllTrainerIntoDB = async () => {
   const result = await User.find();
 

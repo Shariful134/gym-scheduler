@@ -6,21 +6,21 @@ import auth from '../../middlewares/auth';
 
 const router = Router();
 
-//Registration Admin
+//Admin Registration Route
 router.post(
   '/register-admin',
   validateRequest(authValidation.registerUserValidationSchema),
   authControllers.registerUser,
 );
 
-//Login User
+//Login User Route
 router.post(
   '/login',
   validateRequest(authValidation.loginValidationschema),
   authControllers.loginUser,
 );
 
-//Registration Trainer
+//Trainer Registration Route
 router.post(
   '/register-trainer',
   auth('Admin'),
@@ -28,14 +28,14 @@ router.post(
   authControllers.registerdTrainer,
 );
 
-//delete Trainer
+// Trainer Delete Route
 router.delete(
   '/delete-trainer/:email',
   auth('Admin'),
   authControllers.deleteTrainer,
 );
 
-//Get SingleTrainer
+//Trainee Get by Email
 router.get(
   '/getSingle-trainer/:email',
   auth('Admin'),

@@ -40,7 +40,7 @@ router.get('/getAll', scheduleControllers.getAllClassSchedule);
 router.get(
   '/get-assignedTrainer',
   auth('Trainer'),
-  scheduleControllers.getAllClassScheduleAssignedTrainer,
+  scheduleControllers.getAssignedSchedules,
 );
 
 export const classScheduleRoutes = router;

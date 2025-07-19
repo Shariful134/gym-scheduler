@@ -43,7 +43,6 @@ const classScheduleIntoDB = async (payload: IClassSchedule) => {
     );
   }
 
-  // Find all existing classes for the same trainer on the same date
   const existingSchedules = await ClassSchedule.find({
     trainerId: payload.trainerId,
     date: payload.date,
@@ -54,7 +53,6 @@ const classScheduleIntoDB = async (payload: IClassSchedule) => {
     const existingStart = convertToMinutes(schedule.startTime);
     const existingEnd = convertToMinutes(schedule.endTime);
 
-    // Case 1: Overlap Check
     const isOverlapping =
       startMinutes < existingEnd && endMinutes > existingStart;
     if (isOverlapping) {
@@ -184,12 +182,15 @@ const getAllClassScheduleIntoDB = async () => {
 };
 
 //getAll ClassSchedule with assigned Trainee
-const getAllClassScheduleAssignedTrainerIntoDB = async (id: string) => {
+const getAssignedSchedulesIntoDB = async (id: string) => {
   const result = await ClassSchedule.find({ trainerId: id }).populate(
     'trainerId',
   );
-  if (!result) {
-    throw new AppError(StatusCodes.BAD_REQUEST, 'Class Schedule is not Found!');
+  if (result?.length === 0) {
+    throw new AppError(
+      StatusCodes.BAD_REQUEST,
+      'Your Class Schedule is not Found!',
+    );
   }
   return result;
 };
@@ -200,5 +201,5 @@ export const scheduleServices = {
   deleteClassScheduleIntoDB,
   getSingleClassScheduleIntoDB,
   getAllClassScheduleIntoDB,
-  getAllClassScheduleAssignedTrainerIntoDB,
+  getAssignedSchedulesIntoDB,
 };

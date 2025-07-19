@@ -31,7 +31,6 @@ const auth = (...requiredRoles: TUserRole[]) => {
     }
 
     const { userEmail, role, iat, exp } = decoded;
-
     const user = await User.isUserExistsByEmail(userEmail);
 
     //checking user is exists
@@ -42,7 +41,7 @@ const auth = (...requiredRoles: TUserRole[]) => {
     if (requiredRoles && !requiredRoles.includes(role as TUserRole)) {
       throw new AppError(
         StatusCodes.UNAUTHORIZED,
-        // `Unauthorized access - only ${role}s are allowed.`,
+
         `You must be an ${requiredRoles.join(' or ')} to perform this action.`,
       );
     }

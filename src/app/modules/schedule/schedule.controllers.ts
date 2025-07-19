@@ -61,11 +61,10 @@ const getAllClassSchedule = catchAsync(async (req, res) => {
 });
 
 //GetAll Class Schedule
-const getAllClassScheduleAssignedTrainer = catchAsync(async (req, res) => {
-  const result =
-    await scheduleServices.getAllClassScheduleAssignedTrainerIntoDB(
-      req?.user?.id,
-    );
+const getAssignedSchedules = catchAsync(async (req, res) => {
+  const result = await scheduleServices.getAssignedSchedulesIntoDB(
+    req?.user?.id,
+  );
   sendResponse(res, {
     statusCode: StatusCodes.CREATED,
     success: true,
@@ -80,5 +79,5 @@ export const scheduleControllers = {
   deleteClassSchedule,
   getSingleClassSchedule,
   getAllClassSchedule,
-  getAllClassScheduleAssignedTrainer,
+  getAssignedSchedules,
 };

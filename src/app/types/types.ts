@@ -13,11 +13,3 @@ export type IUserInfo = {
   iat: number;
   exp: number;
 };
-
-// export type CustomJwtPayload = {
-//   id: string;
-//   userEmail: string;
-//   role: 'Admin' | 'Trainer' | 'Trainee';
-//   iat: number;
-//   exp: number;
-// };

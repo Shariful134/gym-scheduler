@@ -72,7 +72,7 @@ const updateBooking = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: StatusCodes.CREATED,
     success: true,
-    message: 'Booking Canlceled Successfully',
+    message: 'Booking Updated Successfully',
     data: result,
   });
 });
