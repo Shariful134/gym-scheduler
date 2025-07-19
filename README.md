@@ -123,8 +123,8 @@ npm run start:dev
 | POST   | `/create`               | Create class schedule (Admin only)              |
 | PATCH  | `/update/:id`           | Update class schedule (Admin only)              |
 | DELETE | `/delete/:id`           | Delete class schedule (Admin only)              |
-| GET    | `/getSingle/:id`        | Get a single class schedule                     |
-| GET    | `/getAll`               | Get all class schedules                         |
+| GET    | `/get/:id`              | Get a single class schedule                     |
+| GET    | `/get`                  | Get all class schedules                         |
 | GET    | `/get-assignedTrainer`  | Get trainer's assigned schedules (Trainer only) |
 
 ---
