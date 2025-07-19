@@ -23,7 +23,14 @@ The **Gym Class Scheduling and Membership Management System** is a role-based ba
 - **Validation:** Zod
 - **Design Pattern:** Modular (MVC Inspired)
 
----
+## Relation Diagram
+<p align="center">
+  <a target="_blank" href="https://www.linkedin.com/in/md-shariful-/">
+    <img src="https://i.postimg.cc/K84F98Hq/ER-Diagram.png" height="250"/>
+  </a>
+</p>
+
+
 ## Clone Repository
 
 ```bash
