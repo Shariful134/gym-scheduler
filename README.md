@@ -25,8 +25,11 @@ The **Gym Class Scheduling and Membership Management System** is a role-based ba
 
 ## Relation Diagram
 
-    <p><img src="https://i.postimg.cc/K84F98Hq/ER-Diagram.png" height="250"/></p>
-
+    <p align="center">
+  <a href="https://i.postimg.cc/K84F98Hq/ER-Diagram.png" target="_blank">
+    <img src="https://i.postimg.cc/K84F98Hq/ER-Diagram.png" height="250" />
+  </a>
+</p>
 
 
 ## Clone Repository
