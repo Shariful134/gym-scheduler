@@ -26,9 +26,11 @@ The **Gym Class Scheduling and Membership Management System** is a role-based ba
 ---
 # Clone Repository
 
+```bash
 git clone https://github.com/Shariful134/gym-scheduler.git
-```ts
 cd gym-scheduler
+npm install
+npm run dev
 ```
 
 # Install Dependencies
