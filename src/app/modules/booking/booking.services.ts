@@ -7,6 +7,7 @@ import jwt, { JwtPayload } from 'jsonwebtoken';
 import config from '../../config';
 import { CustomJwtPayload } from '../../interface';
 import { Types } from 'mongoose';
+import convertToMinutes from '../../utils/converToMinutes';
 
 // Create Bookings
 const createBookingIntoDB = async (
@@ -33,15 +34,46 @@ const createBookingIntoDB = async (
   }
 
   if (schedule?.bookedTrainees?.length >= 10) {
-    //schedule?.maxTrainees
     throw new AppError(
       StatusCodes.BAD_REQUEST,
       'Class schedule is full. Maximum 10 trainees allowed per schedule.',
     );
   }
 
+  const newStartMinutes = convertToMinutes(schedule.startTime);
+  const newEndMinutes = convertToMinutes(schedule.endTime);
+  const newDateStr = new Date(schedule.date).toISOString().split('T')[0];
+
+  const existingTraineeBookings = await Booking.find({
+    traineeId: payload.traineeId,
+  }).populate('scheduleId');
+
+  for (const booking of existingTraineeBookings) {
+    const bookedSchedule = booking.scheduleId as any;
+
+    if (!bookedSchedule) continue;
+
+    const existingDateStr = new Date(bookedSchedule.date)
+      .toISOString()
+      .split('T')[0];
+
+    // ✅ Same date check
+    if (existingDateStr !== newDateStr) continue;
+
+    const existingStart = convertToMinutes(bookedSchedule.startTime);
+    const existingEnd = convertToMinutes(bookedSchedule.endTime);
+
+    const isOverlapping =
+      newStartMinutes < existingEnd && newEndMinutes > existingStart;
+
+    if (isOverlapping) {
+      throw new AppError(
+        StatusCodes.BAD_REQUEST,
+        `You already have a class booked at this time (${bookedSchedule.startTime}–${bookedSchedule.endTime}) on ${existingDateStr}.`,
+      );
+    }
+  }
   schedule.bookedTrainees.push(payload.traineeId);
-  //   schedule.maxTrainees = (schedule.maxTrainees || 0) + 1;
 
   await schedule.save();
 

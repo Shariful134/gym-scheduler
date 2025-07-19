@@ -44,6 +44,6 @@ const classcheduleSchema = new Schema<IClassSchedule>(
 );
 
 export const ClassSchedule = model<IClassSchedule>(
-  'Schedule',
+  'ClassSchedule',
   classcheduleSchema,
 );
