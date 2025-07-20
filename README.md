@@ -1,12 +1,12 @@
 # Gym Class Scheduling and Membership Management System
 
-## Project Overview
+## 1. Project Overview
 
 The **Gym Class Scheduling and Membership Management System** is a role-based backend built with Express.js and TypeScript. It provides seamless scheduling, booking, and user management for Admins, Trainers, and Trainees. This project follows modular architecture with JWT-based authentication, and enforces business rules to ensure smooth gym operations.
 
 ---
 
-## 🔗 Live Server URL
+## 2. Live Server URL
 
 [ https://gym-scheduler-six.vercel.app](https://gym-scheduler-six.vercel.app/)
 
@@ -14,13 +14,13 @@ The **Gym Class Scheduling and Membership Management System** is a role-based ba
 
 ---
 
-## 🔗 Postman documentation URL
+## 3.Postman documentation URL
 
 [ https://documenter.getpostman.com/view/39768585/2sB34kEJpQ](https://documenter.getpostman.com/view/39768585/2sB34kEJpQ)
 
 ---
 
-## Technology Stack
+## 4. Technology Stack
 
 - **Language:** TypeScript
 - **Web Framework:** Express.js
@@ -31,7 +31,7 @@ The **Gym Class Scheduling and Membership Management System** is a role-based ba
 - **Validation:** Zod
 - **Design Pattern:** Modular (MVC Inspired)
 
-## Relation Diagram
+## 5. Relation Diagram
 
 <p align="center">
   <a target="_blank" href="https://i.postimg.cc/K84F98Hq/ER-Diagram.png">
@@ -39,7 +39,7 @@ The **Gym Class Scheduling and Membership Management System** is a role-based ba
   </a>
 </p>
 
-## Clone Repository
+## 6. Clone Repository
 
 ```bash
 git clone https://github.com/Shariful134/gym-scheduler.git
@@ -48,7 +48,7 @@ npm install
 npm run dev
 ```
 
-## Install Dependencies
+## 7. Install Dependencies
 
 ```ts
 npm install
@@ -60,7 +60,7 @@ pnpm install
 bun install
 ```
 
-## Create .env File and Setup your .env File
+## 8. Create .env File and Setup your .env File
 
 ```ts
 NODE_ENV=development
@@ -71,7 +71,7 @@ JWT_ACCESS_SECRET = secret of your access token key
 JWT_REFRESH_SECRET = secret of your refresh token key
 ```
 
-## Run Development Server
+## 9. Run Development Server
 
 step-1:
 
@@ -85,14 +85,14 @@ step-2:
 npm run start:dev
 ```
 
-## Admin Credentials for Testing
+## 10. Admin Credentials for Testing
 
 - **Email**: shariful@gmail.com
 - **Password**: Shariful!23
 
 ---
 
-## Roles and Responsibilities
+## 11. Roles and Responsibilities
 
 - **Admin**: Manage users (Admins, Trainers, Trainees), create & manage class schedules, assign trainers.
 - **Trainer**: View assigned class schedules only.
@@ -100,7 +100,7 @@ npm run start:dev
 
 ---
 
-## Business Rules
+## 12. Business Rules
 
 - Maximum **5 class schedules per day**.
 - Each class lasts **2 hours**.
@@ -110,9 +110,9 @@ npm run start:dev
 
 ---
 
-## API Endpoints
+## 13. API Endpoints
 
-### Auth Routes (`/api/v1/auth`)
+### - Auth Routes (`/api/v1/auth`)
 
 | Method | Endpoint                 | Description                         |
 | ------ | ------------------------ | ----------------------------------- |
@@ -153,7 +153,7 @@ npm run start:dev
 
 ---
 
-## Testing Instructions
+## 14. Testing Instructions
 
 1. Use provided Admin credentials to log in.
 2. Register trainers and trainees.
@@ -163,7 +163,7 @@ npm run start:dev
 
 ---
 
-## Database Schema
+## 15. Database Schema
 
 ### User Model
 
