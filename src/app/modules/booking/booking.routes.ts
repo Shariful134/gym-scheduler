@@ -21,10 +21,10 @@ router.patch('/update/:id', auth('Trainee'), bookingControllers.updateBooking);
 router.patch('/cancel/:id', auth('Trainee'), bookingControllers.cancelBooking);
 
 //Get Booking
-router.get('/getAll', bookingControllers.getAllBooking);
+router.get('/get', bookingControllers.getAllBooking);
 
 //Get Single Booking
-router.get('/getSingle/:id', bookingControllers.getSingleBooking);
+router.get('/get/:id', bookingControllers.getSingleBooking);
 
 //Delete Booking
 router.delete('/delete/:id', auth('Trainee'), bookingControllers.deleteBooking);
