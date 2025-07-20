@@ -87,8 +87,8 @@ npm run start:dev
 
 ## 10. Admin Credentials for Testing
 
-- **Email**: shariful@gmail.com
-- **Password**: Shariful!23
+- **Email**: `shariful@gmail.com`
+- **Password**: `Shariful!23`
 
 ---
 
