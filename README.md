@@ -14,19 +14,11 @@ The **Gym Class Scheduling and Membership Management System** is a role-based ba
 
 ---
 
-## 🚀 Postman documentation
+## 🔗 Postman documentation URL
 
 [👉 https://documenter.getpostman.com/view/39768585/2sB34kEJpQ](https://documenter.getpostman.com/view/39768585/2sB34kEJpQ)
 
 ---
-
-## 🚀 Postman documentation
-
-<p align="start">
-  <a target="_blank" href="https://documenter.getpostman.com/view/39768585/2sB34kEJpQ">
-    <img src="https://documenter.getpostman.com/view/39768585/2sB34kEJpQ" height="250"/>
-  </a>
-</p>
 
 ## 🛠️ Technology Stack
 
