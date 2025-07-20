@@ -1,6 +1,6 @@
-# 🏋️ Gym Class Scheduling and Membership Management System
+# Gym Class Scheduling and Membership Management System
 
-## 📘 Project Overview
+## Project Overview
 
 The **Gym Class Scheduling and Membership Management System** is a role-based backend built with Express.js and TypeScript. It provides seamless scheduling, booking, and user management for Admins, Trainers, and Trainees. This project follows modular architecture with JWT-based authentication, and enforces business rules to ensure smooth gym operations.
 
@@ -8,7 +8,7 @@ The **Gym Class Scheduling and Membership Management System** is a role-based ba
 
 ## 🔗 Live Server URL
 
-[👉 https://gym-scheduler-six.vercel.app](https://gym-scheduler-six.vercel.app/)
+[ https://gym-scheduler-six.vercel.app](https://gym-scheduler-six.vercel.app/)
 
 ---
 
@@ -16,11 +16,11 @@ The **Gym Class Scheduling and Membership Management System** is a role-based ba
 
 ## 🔗 Postman documentation URL
 
-[👉 https://documenter.getpostman.com/view/39768585/2sB34kEJpQ](https://documenter.getpostman.com/view/39768585/2sB34kEJpQ)
+[ https://documenter.getpostman.com/view/39768585/2sB34kEJpQ](https://documenter.getpostman.com/view/39768585/2sB34kEJpQ)
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 - **Language:** TypeScript
 - **Web Framework:** Express.js
@@ -85,14 +85,14 @@ step-2:
 npm run start:dev
 ```
 
-## 🔐 Admin Credentials for Testing
+## Admin Credentials for Testing
 
 - **Email**: shariful@gmail.com
 - **Password**: Shariful!23
 
 ---
 
-## 👥 Roles and Responsibilities
+## Roles and Responsibilities
 
 - **Admin**: Manage users (Admins, Trainers, Trainees), create & manage class schedules, assign trainers.
 - **Trainer**: View assigned class schedules only.
@@ -100,19 +100,19 @@ npm run start:dev
 
 ---
 
-## 📏 Business Rules
+## Business Rules
 
-- ✅ Maximum **5 class schedules per day**.
-- ⏱️ Each class lasts **2 hours**.
-- 👥 Maximum **10 trainees** per class.
-- 🚫 No double-booking in the same time slot.
-- 🚷 Booking is blocked when a schedule is full.
+- Maximum **5 class schedules per day**.
+- Each class lasts **2 hours**.
+- Maximum **10 trainees** per class.
+- No double-booking in the same time slot.
+- Booking is blocked when a schedule is full.
 
 ---
 
-## 🚀 API Endpoints
+## API Endpoints
 
-### 🔐 Auth Routes (`/api/v1/auth`)
+### Auth Routes (`/api/v1/auth`)
 
 | Method | Endpoint                 | Description                         |
 | ------ | ------------------------ | ----------------------------------- |
@@ -127,7 +127,7 @@ npm run start:dev
 
 ---
 
-### 📅 Schedule Routes (`/api/v1/schedule`)
+### Schedule Routes (`/api/v1/schedule`)
 
 | Method | Endpoint               | Description                                     |
 | ------ | ---------------------- | ----------------------------------------------- |
@@ -140,7 +140,7 @@ npm run start:dev
 
 ---
 
-### 📦 Booking Routes (`/api/v1/booking`)
+### Booking Routes (`/api/v1/booking`)
 
 | Method | Endpoint      | Description                   |
 | ------ | ------------- | ----------------------------- |
@@ -153,7 +153,7 @@ npm run start:dev
 
 ---
 
-## 🧪 Testing Instructions
+## Testing Instructions
 
 1. Use provided Admin credentials to log in.
 2. Register trainers and trainees.
@@ -163,9 +163,9 @@ npm run start:dev
 
 ---
 
-## 🧱 Database Schema
+## Database Schema
 
-### 👤 User Model
+### User Model
 
 ```ts
 {
@@ -176,7 +176,7 @@ npm run start:dev
 }
 ```
 
-### 👤 Class Scheduling model
+### Class Scheduling model
 
 ```ts
 {
@@ -191,7 +191,7 @@ npm run start:dev
 }
 ```
 
-### 👤 Booking model
+### Booking model
 
 ```ts
 {
