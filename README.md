@@ -20,7 +20,20 @@ The **Gym Class Scheduling and Membership Management System** is a role-based ba
 
 ---
 
-## 4. Technology Stack
+## 4. Admin Credentials for Testing
+
+- **Email**: `shariful@gmail.com`
+- **Password**: `Shariful!23`
+
+## 5. Relation Diagram
+
+<p align="center">
+  <a target="_blank" href="https://i.postimg.cc/K84F98Hq/ER-Diagram.png">
+    <img src="https://i.postimg.cc/K84F98Hq/ER-Diagram.png" height="250"/>
+  </a>
+</p>
+
+## 6. Technology Stack
 
 - **Language:** TypeScript
 - **Web Framework:** Express.js
@@ -31,15 +44,7 @@ The **Gym Class Scheduling and Membership Management System** is a role-based ba
 - **Validation:** Zod
 - **Design Pattern:** Modular (MVC Inspired)
 
-## 5. Relation Diagram
-
-<p align="center">
-  <a target="_blank" href="https://i.postimg.cc/K84F98Hq/ER-Diagram.png">
-    <img src="https://i.postimg.cc/K84F98Hq/ER-Diagram.png" height="250"/>
-  </a>
-</p>
-
-## 6. Clone Repository
+## 7. Clone Repository
 
 ```bash
 git clone https://github.com/Shariful134/gym-scheduler.git
@@ -48,7 +53,7 @@ npm install
 npm run dev
 ```
 
-## 7. Install Dependencies
+## 8. Install Dependencies
 
 ```ts
 npm install
@@ -60,7 +65,7 @@ pnpm install
 bun install
 ```
 
-## 8. Create .env File and Setup your .env File
+## 9. Create .env File and Setup your .env File
 
 ```ts
 NODE_ENV=development
@@ -71,7 +76,7 @@ JWT_ACCESS_SECRET = secret of your access token key
 JWT_REFRESH_SECRET = secret of your refresh token key
 ```
 
-## 9. Run Development Server
+## 10. Run Development Server
 
 step-1:
 
@@ -84,11 +89,6 @@ step-2:
 ```ts
 npm run start:dev
 ```
-
-## 10. Admin Credentials for Testing
-
-- **Email**: `shariful@gmail.com`
-- **Password**: `Shariful!23`
 
 ---
 
