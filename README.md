@@ -12,6 +12,22 @@ The **Gym Class Scheduling and Membership Management System** is a role-based ba
 
 ---
 
+---
+
+## 🚀 Postman documentation
+
+[👉 https://documenter.getpostman.com/view/39768585/2sB34kEJpQ](https://documenter.getpostman.com/view/39768585/2sB34kEJpQ)
+
+---
+
+## 🚀 Postman documentation
+
+<p align="start">
+  <a target="_blank" href="https://documenter.getpostman.com/view/39768585/2sB34kEJpQ">
+    <img src="https://documenter.getpostman.com/view/39768585/2sB34kEJpQ" height="250"/>
+  </a>
+</p>
+
 ## 🛠️ Technology Stack
 
 - **Language:** TypeScript
@@ -25,13 +41,11 @@ The **Gym Class Scheduling and Membership Management System** is a role-based ba
 
 ## Relation Diagram
 
-
 <p align="center">
   <a target="_blank" href="https://i.postimg.cc/K84F98Hq/ER-Diagram.png">
     <img src="https://i.postimg.cc/K84F98Hq/ER-Diagram.png" height="250"/>
   </a>
 </p>
-
 
 ## Clone Repository
 
@@ -43,6 +57,7 @@ npm run dev
 ```
 
 ## Install Dependencies
+
 ```ts
 npm install
 # or
@@ -54,6 +69,7 @@ bun install
 ```
 
 ## Create .env File and Setup your .env File
+
 ```ts
 NODE_ENV=development
 PORT=5000
@@ -64,15 +80,18 @@ JWT_REFRESH_SECRET = secret of your refresh token key
 ```
 
 ## Run Development Server
+
 step-1:
+
 ```ts
 npm run build
 ```
+
 step-2:
+
 ```ts
 npm run start:dev
 ```
-
 
 ## 🔐 Admin Credentials for Testing
 
@@ -103,42 +122,42 @@ npm run start:dev
 
 ### 🔐 Auth Routes (`/api/v1/auth`)
 
-| Method | Endpoint                    | Description                          |
-|--------|-----------------------------|--------------------------------------|
-| POST   | `/register-admin`           | Register Admin                       |
-| POST   | `/register-trainer`         | Register Trainer (Admin only)        |
-| POST   | `/register-trainee`         | Register Trainee                     |
-| POST   | `/login`                    | Login as user                        |
-| DELETE | `/delete-trainer/:email`    | Delete Trainer by email(Admin only)  |
-| GET    | `/get-user`                 | Get all users                        |
-| GET    | `/get-trainer`              | Get all trainers                     |
-| GET    | `/get-trainer/:email`       | Get single trainer by email (Admin)  |
+| Method | Endpoint                 | Description                         |
+| ------ | ------------------------ | ----------------------------------- |
+| POST   | `/register-admin`        | Register Admin                      |
+| POST   | `/register-trainer`      | Register Trainer (Admin only)       |
+| POST   | `/register-trainee`      | Register Trainee                    |
+| POST   | `/login`                 | Login as user                       |
+| DELETE | `/delete-trainer/:email` | Delete Trainer by email(Admin only) |
+| GET    | `/get-user`              | Get all users                       |
+| GET    | `/get-trainer`           | Get all trainers                    |
+| GET    | `/get-trainer/:email`    | Get single trainer by email (Admin) |
 
 ---
 
 ### 📅 Schedule Routes (`/api/v1/schedule`)
 
-| Method | Endpoint                | Description                                     |
-|--------|-------------------------|-------------------------------------------------|
-| POST   | `/create`               | Create class schedule (Admin only)              |
-| PATCH  | `/update/:id`           | Update class schedule (Admin only)              |
-| DELETE | `/delete/:id`           | Delete class schedule (Admin only)              |
-| GET    | `/get/:id`              | Get a single class schedule                     |
-| GET    | `/get`                  | Get all class schedules                         |
-| GET    | `/get-assignedTrainer`  | Get trainer's assigned schedules (Trainer only) |
+| Method | Endpoint               | Description                                     |
+| ------ | ---------------------- | ----------------------------------------------- |
+| POST   | `/create`              | Create class schedule (Admin only)              |
+| PATCH  | `/update/:id`          | Update class schedule (Admin only)              |
+| DELETE | `/delete/:id`          | Delete class schedule (Admin only)              |
+| GET    | `/get/:id`             | Get a single class schedule                     |
+| GET    | `/get`                 | Get all class schedules                         |
+| GET    | `/get-assignedTrainer` | Get trainer's assigned schedules (Trainer only) |
 
 ---
 
 ### 📦 Booking Routes (`/api/v1/booking`)
 
-| Method | Endpoint         | Description                        |
-|--------|------------------|------------------------------------|
-| POST   | `/create`        | Create booking (Trainee only)      |
-| PATCH  | `/update/:id`    | Update booking (Trainee only)      |
-| PATCH  | `/cancel/:id`    | Cancel booking (Trainee only)      |
-| DELETE | `/delete/:id`    | Delete booking (Trainee only)      |
-| GET    | `/get`           | Get all bookings                   |
-| GET    | `/get/:id`       | Get a single booking by id              |
+| Method | Endpoint      | Description                   |
+| ------ | ------------- | ----------------------------- |
+| POST   | `/create`     | Create booking (Trainee only) |
+| PATCH  | `/update/:id` | Update booking (Trainee only) |
+| PATCH  | `/cancel/:id` | Cancel booking (Trainee only) |
+| DELETE | `/delete/:id` | Delete booking (Trainee only) |
+| GET    | `/get`        | Get all bookings              |
+| GET    | `/get/:id`    | Get a single booking by id    |
 
 ---
 
@@ -164,6 +183,7 @@ npm run start:dev
   role: 'Admin' | 'Trainer' | 'Trainee';
 }
 ```
+
 ### 👤 Class Scheduling model
 
 ```ts
@@ -178,6 +198,7 @@ npm run start:dev
     "createdBy": "687aa981037e372a6d647998"
 }
 ```
+
 ### 👤 Booking model
 
 ```ts
@@ -188,8 +209,11 @@ npm run start:dev
     "status": "confirmed"
 }
 ```
+
 ### Sample of Response:
+
 - Success Response:
+
 ```ts
 {
     "success": true,
@@ -200,6 +224,7 @@ npm run start:dev
 ```
 
 - For Validation Errors:
+
 ```ts
 {
     "success": false,
@@ -213,6 +238,7 @@ npm run start:dev
 ```
 
 - Unauthorized Access:
+
 ```ts
 {
     "success": false,
@@ -222,6 +248,7 @@ npm run start:dev
 ```
 
 - Booking Limit Exceeded:
+
 ```ts
 {
     "success": false,
@@ -229,11 +256,3 @@ npm run start:dev
 }
 
 ```
-
-
-
-
-
-
-
-
